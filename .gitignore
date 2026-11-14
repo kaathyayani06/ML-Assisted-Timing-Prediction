@@ -21,7 +21,6 @@ checkpoints/**/*.pt
 *.out
 
 # Evaluation outputs
-*.csv
 *.npz
 
 # IDE and OS files
