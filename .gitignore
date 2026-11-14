@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Dataset files
+data/8_rat/
+*.graph.bin
+
+# Model checkpoints
+checkpoints/**/*.pth
+checkpoints/**/*.pt
+
+# Training logs
+*.log
+*.out
+
+# Evaluation outputs
+*.csv
+*.npz
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
