@@ -1,6 +1,6 @@
 # Model Checkpoints
 
-This directory contains the trained model checkpoints required for evaluating the timing prediction models.
+This directory is intended to store the trained model checkpoints required for evaluating the timing prediction models.
 
 ## Required Checkpoints
 
