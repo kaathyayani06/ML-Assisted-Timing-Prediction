@@ -47,7 +47,6 @@ data/
 
 ## Important Notes
 
-- The complete dataset is approximately 4.14 GB.
 - Dataset files are not included in this GitHub repository because of their size.
 - Users must obtain the required graph files separately and place them in the directory structure shown above.
 - The training and evaluation scripts expect the graph files to be available under `data/8_rat/`.
