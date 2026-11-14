@@ -1,19 +1,17 @@
 # Dataset
 
-This directory is intended to contain the dataset used for the ML-Assisted Timing Prediction project.
-
 ## Dataset Source
 
-The experimental dataset is obtained from the open-source TimingPredict project.
+The benchmark dataset used in this project is obtained from the open-source TimingPredict project.
 
 **Source:** https://github.com/TimingPredict/Dataset
 
-## Dataset Details
+## Dataset Overview
 
-- Dataset folder: `8_rat`
+- Dataset directory: `8_rat`
 - Approximate size: 4.14 GB
-- Contains the complete dataset used in the experiments.
-- Includes benchmark circuit data for training and testing.
+- Contains benchmark data for ten circuits.
+- Used for GNN training, MLP baseline training, and cross-circuit evaluation.
 
 ## Benchmark Circuits
 
@@ -31,25 +29,26 @@ The experimental dataset is obtained from the open-source TimingPredict project.
 - synth_ram
 - zipdiv
 
-## Local Directory Structure
+## Expected Directory Structure
 
-The complete dataset is maintained locally and is not uploaded to this GitHub repository because of its large size.
+The dataset is maintained locally and is not uploaded to this repository because of its large size.
 
-Place the `8_rat` folder inside the project's `data/` directory when preparing the local experimental environment.
+The project code expects the following files inside the `8_rat` directory:
 
 ```text
-ML-Assisted-Timing-Prediction/
-└── data/
-    ├── README.md
-    └── 8_rat/
-        ├── aes_cipher/
-        ├── blabla/
-        ├── des/
-        ├── genericfir/
-        ├── spm/
-        ├── usb/
-        ├── BM64/
-        ├── cic_decimator/
-        ├── synth_ram/
-        └── zipdiv/
+data/
+├── README.md
+└── 8_rat/
+    ├── aes_cipher.graph.bin
+    ├── blabla.graph.bin
+    ├── des.graph.bin
+    ├── genericfir.graph.bin
+    ├── spm.graph.bin
+    ├── usb.graph.bin
+    ├── BM64.graph.bin
+    ├── cic_decimator.graph.bin
+    ├── synth_ram.graph.bin
+    └── zipdiv.graph.bin
 ```
+
+**Note:** The directory structure above represents the filenames expected by the project code. The complete dataset remains available locally.
