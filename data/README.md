@@ -1,21 +1,18 @@
-# Dataset
+# Dataset Setup
+
+This project uses the **8_rat dataset** for graph-based timing prediction.
 
 ## Dataset Source
 
-The benchmark dataset used in this project is obtained from the open-source TimingPredict project.
+The dataset is based on the TimingPredict dataset:
 
-**Source:** https://github.com/TimingPredict/Dataset
+[TimingPredict Dataset – GitHub](https://github.com/TimingPredict/Dataset)
 
-## Dataset Overview
+## Dataset Information
 
-- Dataset directory: `8_rat`
-- Approximate size: 4.14 GB
-- Contains benchmark data for ten circuits.
-- Used for GNN training, MLP baseline training, and cross-circuit evaluation.
+The dataset contains graph data for ten benchmark circuits.
 
-## Benchmark Circuits
-
-**Training Circuits:**
+### Training Circuits
 - aes_cipher
 - blabla
 - des
@@ -23,21 +20,18 @@ The benchmark dataset used in this project is obtained from the open-source Timi
 - spm
 - usb
 
-**Testing Circuits:**
+### Testing Circuits
 - BM64
 - cic_decimator
 - synth_ram
 - zipdiv
 
-## Expected Directory Structure
+## Directory Structure
 
-The dataset is maintained locally and is not uploaded to this repository because of its large size.
-
-The project code expects the following files inside the `8_rat` directory:
+After obtaining the required processed graph files, place them in the following directory:
 
 ```text
 data/
-├── README.md
 └── 8_rat/
     ├── aes_cipher.graph.bin
     ├── blabla.graph.bin
@@ -51,4 +45,10 @@ data/
     └── zipdiv.graph.bin
 ```
 
-**Note:** The directory structure above represents the filenames expected by the project code. The complete dataset remains available locally.
+## Important Notes
+
+- The complete dataset is approximately 4.14 GB.
+- Dataset files are not included in this GitHub repository because of their size.
+- Users must obtain the required graph files separately and place them in the directory structure shown above.
+- The training and evaluation scripts expect the graph files to be available under `data/8_rat/`.
+
