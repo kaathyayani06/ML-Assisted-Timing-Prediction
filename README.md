@@ -1,24 +1,25 @@
 # Cross-Circuit Generalization of Graph Neural Networks for Timing Prediction: A Comparison with an MLP Baseline
 
-## Project Overview
+## 1. Project Overview
 
-This project focuses on machine learning-based timing prediction in VLSI physical design. It implements and compares two prediction models:
+This project investigates machine learning-assisted timing prediction in VLSI physical design, focusing on the cross-circuit generalization capability of machine learning models.
 
-1. **Graph Neural Network (GNN):** Uses circuit connectivity and auxiliary net-delay and cell-delay training objectives.
-2. **Multi-Layer Perceptron (MLP):** Uses node-level features to predict timing parameters.
+Two models are implemented and evaluated:
 
-The objective is to evaluate both models on different benchmark circuits and compare their prediction performance.
+- **Graph Neural Network (GNN):** Utilizes circuit graph connectivity and node-level timing features to predict timing parameters.
+- **Multi-Layer Perceptron (MLP):** Uses node-level features as a baseline for comparison with the GNN model.
 
-## Dataset
+The objective is to analyse and compare their prediction performance on benchmark circuits that are not used during training.
 
-The project uses the open-source dataset from the TimingPredict project.
+## 2. Dataset
 
-**Dataset Repository:**  
-https://github.com/TimingPredict/Dataset
+The experiments use benchmark circuit data from the open-source TimingPredict project.
 
-Ten benchmark circuits are used in the experiments.
+**Dataset Source:** [TimingPredict Dataset](https://github.com/TimingPredict/Dataset)
 
-**Training Circuits:**
+A total of ten benchmark circuits are considered.
+
+**Training Circuits (6):**
 - aes_cipher
 - blabla
 - des
@@ -26,53 +27,93 @@ Ten benchmark circuits are used in the experiments.
 - spm
 - usb
 
-**Test Circuits:**
+**Testing Circuits (4):**
 - BM64
 - cic_decimator
 - synth_ram
 - zipdiv
 
-## Models Implemented
+The testing circuits are held out during training to evaluate cross-circuit generalization.
 
-### 1. Graph Neural Network (GNN)
-- Represents circuit data as graphs.
-- Uses graph connectivity for timing prediction.
-- Includes auxiliary net-delay and cell-delay training objectives.
+## 3. Models Implemented
 
-### 2. MLP Baseline
+### 3.1 Graph Neural Network (GNN)
+
+- Represents circuit information using graph structures.
+- Utilizes graph connectivity and node-level features.
+- Predicts eight timing-related target channels.
+- Incorporates auxiliary net-delay and cell-delay training objectives.
+
+### 3.2 Multi-Layer Perceptron (MLP) Baseline
+
 - Uses ten node-level input features.
 - Consists of five hidden layers.
-- Predicts eight timing target channels.
+- Predicts eight timing-related target channels.
+- Serves as a baseline for comparison with the GNN model.
 
-## Evaluation Metrics
+## 4. Evaluation Metrics
 
-Both models are evaluated using:
+The models are evaluated using the following metrics:
 
-- R² (Coefficient of Determination)
-- MAE (Mean Absolute Error)
-- RMSE (Root Mean Squared Error)
+- **Mean Absolute Error (MAE):** Measures the average absolute prediction error.
+- **Root Mean Squared Error (RMSE):** Measures the magnitude of prediction errors.
+- **R² Score:** Evaluates the goodness of fit.
+- **Rank Correlation:** Measures the agreement between predicted and actual endpoint rankings.
 
-Performance is analysed across all test circuits and individually for each circuit.
+Performance is analysed across individual benchmark circuits and timing target channels.
 
-## Repository Contents
+## 5. Repository Structure
+
+```text
+ML-Assisted-Timing-Prediction/
+│
+├── README.md
+├── requirements.txt
+│
+├── data_graph.py
+├── model.py
+├── train_gnn.py
+├── train_mlp_graph.py
+├── evaluate_endpoint_models.py
+├── evaluate_endpoint_models_pre_audit.py
+├── evaluate_mlp_graph.py
+└── tee.py
+```
+
+## 6. Environment Requirements
+
+The project uses the following software environment:
+
+| Component | Version |
+|---|---|
+| Python | 3.11.9 |
+| PyTorch | 2.1.2+cpu |
+| DGL | 2.2.1 |
+| NumPy | 1.26.4 |
+| SciPy | 1.17.1 |
+
+## 7. Python Files Description
 
 | File | Description |
 |---|---|
-| `data_graph.py` | Graph and feature construction |
+| `data_graph.py` | Graph construction and feature preparation |
 | `model.py` | GNN model implementation |
 | `train_gnn.py` | GNN training |
-| `train_mlp_graph.py` | MLP training |
+| `train_mlp_graph.py` | MLP baseline training |
 | `evaluate_endpoint_models.py` | Endpoint-level model evaluation |
 | `evaluate_endpoint_models_pre_audit.py` | Pre-audit evaluation |
-| `evaluate_mlp_graph.py` | MLP evaluation |
+| `evaluate_mlp_graph.py` | MLP baseline evaluation |
 | `tee.py` | Supporting utility script |
 
-## Key Observation
+## 8. Key Observation
 
-The comparison shows that model performance varies depending on the predicted timing target and the benchmark circuit. Neither model performs uniformly better across all evaluation cases.
+The experimental results indicate that model performance varies across timing target channels and benchmark circuits.
 
-## Acknowledgement
+Neither model consistently outperforms the other across all evaluation cases. This highlights the importance of analysing prediction performance at both circuit and timing-channel levels when evaluating cross-circuit generalization.
 
-We acknowledge the original TimingPredict project for providing the dataset and reference resources used in this work.
+## 9. Acknowledgement
+
+We acknowledge the original TimingPredict project for providing the open-source benchmark dataset and reference resources used in this work.
 
 **Dataset:** https://github.com/TimingPredict/Dataset
+ 
