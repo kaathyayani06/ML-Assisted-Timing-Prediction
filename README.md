@@ -32,7 +32,6 @@ The experiments use ten benchmark circuits divided into training and testing set
 
 **Dataset availability:**
 
-- The complete dataset is approximately 4.14 GB.
 - Dataset files are not included in this repository because of their size.
 - Refer to [`data/README.md`](data/README.md) for dataset setup instructions.
 
